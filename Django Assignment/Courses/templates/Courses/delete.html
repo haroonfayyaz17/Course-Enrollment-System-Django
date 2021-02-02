@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+</head>
+<body>
+<h1 class="row justify-content-center">Delete Course</h1>
+{% extends 'Courses/base.html' %}
+{% load crispy_forms_tags %}
+{% block main %}
+<form method="post" class="post-form" >
+    {% csrf_token %}
+    {{ form|crispy }}
+    <fieldset disabled>
+        Course ID: {{object.id}} <br>
+        Title: {{object.title}} <br>
+        Credits: {{object.credits}} <br>
+         <br>
+        <br>
+        Click YES to confirm
+    </fieldset>
+    <input type = "submit" class="btn btn-danger" value="YES">
+    <a href='/courses/course' class="btn btn-light">Cancel</a>
+</form>
+{% endblock %}
+</body>
+</html>

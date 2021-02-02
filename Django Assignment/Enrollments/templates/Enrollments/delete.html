@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+</head>
+<body>
+<h1 class="row justify-content-center">Delete Enrollment</h1>
+{% extends 'Enrollments/base.html' %}
+{% load crispy_forms_tags %}
+{% block main %}
+<form method="post" class="post-form" >
+    {% csrf_token %}
+    {{ form|crispy }}
+    <fieldset disabled>
+        Enrollment ID: {{object.id}} <br>
+        Student: {{object.student.firstName|add:" "|add:object.student.lastName}} <br>
+        Course: {{object.course.title}} <br>
+        Grade: {{object.grade}} <br>
+        <br>
+        <br>
+        Click YES to confirm
+    </fieldset>
+    <input type = "submit" class="btn btn-danger" value="YES">
+    <a href='/enrollments/enrollment' class="btn btn-light">Cancel</a>
+</form>
+{% endblock %}
+</body>
+</html>
